@@ -3,6 +3,7 @@
 //Variables
 var optionBtn = document.querySelectorAll('button');
 var questionText = document.querySelector('.question__h2');
+var optionsClick = document.querySelector('.options');
 var quiz = [{
   question: 'Which type of beans are used to make baked beans?',
   options: ['Cannellini beans', 'Borlotti beans', 'Haricot beans'],
@@ -52,4 +53,14 @@ questionText.innerHTML = quiz[roundNumber].question; // Display 3 answers inside
 
 optionBtn[0].innerHTML += quiz[roundNumber].options[0];
 optionBtn[1].innerHTML += quiz[roundNumber].options[1];
-optionBtn[2].innerHTML += quiz[roundNumber].options[2];
+optionBtn[2].innerHTML += quiz[roundNumber].options[2]; //click event listener on parent div .options
+
+var score = 0;
+optionBtn.forEach(function (button) {
+  button.addEventListener('click', function (e) {
+    if (e.target.innerHTML === quiz[roundNumber].answer) {
+      score++;
+      console.log(score);
+    }
+  });
+});

@@ -1,6 +1,7 @@
 //Variables
 const optionBtn = document.querySelectorAll('button');
 const questionText = document.querySelector('.question__h2');
+const optionsClick = document.querySelector('.options');
 
 const quiz = [
   {
@@ -59,7 +60,6 @@ const quiz = [
 const random = Math.random();
 const roundNumber = Math.round(random * 10);
 
-
 // Display the question in h2 tag 
 questionText.innerHTML = quiz[roundNumber].question;
 
@@ -67,5 +67,19 @@ questionText.innerHTML = quiz[roundNumber].question;
 optionBtn[0].innerHTML += quiz[roundNumber].options[0];
 optionBtn[1].innerHTML += quiz[roundNumber].options[1];
 optionBtn[2].innerHTML += quiz[roundNumber].options[2]; 
+
+//click event listener on parent div .options
+
+let score = 0;
+
+ optionBtn.forEach(button => {
+   button.addEventListener('click', e => {
+     if(e.target.innerHTML === quiz[roundNumber].answer){
+      score ++
+      console.log(score);
+     }
+ })  
+})
+
 
 
