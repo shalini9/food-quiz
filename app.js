@@ -1,6 +1,6 @@
 //Variables
 const optionBtn = document.querySelectorAll('button');
-const question = document.querySelectorAll('question__h2') 
+const questionText = document.querySelector('.question__h2');
 
 const quiz = [
   {
@@ -24,9 +24,9 @@ const quiz = [
     answer: 'Migraines'
   },
   {
-    question: 'Do frozen yoghurts have the same probiotic cultures as regular yoghurts?',
-    options: ['Yes', 'No'],
-    answer: 'Yes'
+    question: 'Which vegetable is a flower you can eat?',
+    options: ['Broccoli', 'Lettuce', 'Squash'],
+    answer: 'Broccoli'
   },
   {
     question: 'What vegetable has varieties known as Bell Tower, Orobelle, and Jupiter?',
@@ -40,7 +40,7 @@ const quiz = [
   },
   {
     question: 'Natural-made honey is:',
-    options: ['Bee poop, Bee vomit, Bee urine'],
+    options: ['Bee poop', 'Bee vomit', 'Bee urine'],
     answer: 'Bee vomit'
   },
   {
@@ -58,7 +58,14 @@ const quiz = [
 //Math.random() to select random questions 
 const random = Math.random();
 const roundNumber = Math.round(random * 10);
-console.log(quiz[roundNumber]);
-console.log(roundNumber);
+
+
+// Display the question in h2 tag 
+questionText.innerHTML = quiz[roundNumber].question;
+
+// Display 3 answers inside 3 buttons
+optionBtn[0].innerHTML += quiz[roundNumber].options[0];
+optionBtn[1].innerHTML += quiz[roundNumber].options[1];
+optionBtn[2].innerHTML += quiz[roundNumber].options[2]; 
 
 
