@@ -1,9 +1,19 @@
 "use strict";
 
 //Variables
-var optionBtn = document.querySelectorAll('button');
+//const startPage = document.querySelector('.start__page');
+var startBtn = document.querySelector('.start__button');
+var optionBtn = document.querySelectorAll('.options button');
 var questionText = document.querySelector('.question__h2');
-var optionsClick = document.querySelector('.options');
+var questionArea = document.querySelector('.question');
+var optionsClick = document.querySelector('.options'); // Start button
+
+startBtn.addEventListener('click', function (e) {
+  startBtn.classList.add('dis-none');
+  questionArea.classList.remove('dis-none');
+  optionsClick.classList.remove('dis-none');
+}); //Quiz questions
+
 var quiz = [{
   question: 'Which type of beans are used to make baked beans?',
   options: ['Cannellini beans', 'Borlotti beans', 'Haricot beans'],
@@ -53,13 +63,16 @@ questionText.innerHTML = quiz[roundNumber].question; // Display 3 answers inside
 
 optionBtn[0].innerHTML += quiz[roundNumber].options[0];
 optionBtn[1].innerHTML += quiz[roundNumber].options[1];
-optionBtn[2].innerHTML += quiz[roundNumber].options[2]; //click event listener on parent div .options
+optionBtn[2].innerHTML += quiz[roundNumber].options[2]; //click event answer buttons, if statement score
 
 var score = 0;
 optionBtn.forEach(function (button) {
   button.addEventListener('click', function (e) {
     if (e.target.innerHTML === quiz[roundNumber].answer) {
       score++;
+      console.log(score);
+    } else if (e.target.innerHTML !== quiz[roundNumber].answer) {
+      score = 0;
       console.log(score);
     }
   });

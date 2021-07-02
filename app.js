@@ -1,8 +1,20 @@
 //Variables
-const optionBtn = document.querySelectorAll('button');
+//const startPage = document.querySelector('.start__page');
+const startBtn = document.querySelector('.start__button');
+const optionBtn = document.querySelectorAll('.options button');
 const questionText = document.querySelector('.question__h2');
+const questionArea = document.querySelector('.question')
 const optionsClick = document.querySelector('.options');
 
+
+// Start button
+startBtn.addEventListener('click', e => {
+  startBtn.classList.add('dis-none');
+  questionArea.classList.remove('dis-none');
+  optionsClick.classList.remove('dis-none');
+})
+
+//Quiz questions
 const quiz = [
   {
     question: 'Which type of beans are used to make baked beans?',
@@ -68,18 +80,23 @@ optionBtn[0].innerHTML += quiz[roundNumber].options[0];
 optionBtn[1].innerHTML += quiz[roundNumber].options[1];
 optionBtn[2].innerHTML += quiz[roundNumber].options[2]; 
 
-//click event listener on parent div .options
+//click event answer buttons, if statement score
 
 let score = 0;
 
  optionBtn.forEach(button => {
    button.addEventListener('click', e => {
      if(e.target.innerHTML === quiz[roundNumber].answer){
-      score ++
+      score ++;
       console.log(score);
+     }else if (e.target.innerHTML !== quiz[roundNumber].answer){
+       score = 0;
+       console.log(score);
      }
  })  
 })
+
+
 
 
 

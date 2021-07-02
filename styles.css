@@ -13,9 +13,8 @@
   display: flex;
   justify-items: center;
   background-color: lightblue;
-  }
+}
 
 .dis-none {
   display: none;
 }
-
